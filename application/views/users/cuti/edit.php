@@ -118,13 +118,22 @@
                                 </div>
                             </div>
 
+                            <?php
+                            $styleOverflow = 'style="
+    display:inline-block;
+    max-width:100%;
+    word-wrap:break-word;
+    white-space:normal;
+    overflow-wrap:break-word;
+"';
+                            ?>
                             <!-- Lampiran Surat Permohonan Cuti-->
                             <div class="form-group">
                                 <label class="col-lg-12">Surat Permohonan Cuti</label>
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->surat_permohonan_cuti)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->surat_permohonan_cuti) ?>"
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->surat_permohonan_cuti) ?>"
                                                               target="_blank">
                                                 <?= basename($query->surat_permohonan_cuti) ?>
                                             </a>
@@ -142,7 +151,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->sk_pengangkatan_notaris)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->sk_pengangkatan_notaris) ?>"
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->sk_pengangkatan_notaris) ?>"
                                                               target="_blank">
                                                 <?= basename($query->sk_pengangkatan_notaris) ?>
                                             </a>
@@ -160,7 +169,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->berita_acara_sumpah)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->berita_acara_sumpah) ?>"
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->berita_acara_sumpah) ?>"
                                                               target="_blank">
                                                 <?= basename($query->berita_acara_sumpah) ?>
                                             </a>
@@ -178,7 +187,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->sertifikat_cuti_asli)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->sertifikat_cuti_asli) ?>"
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->sertifikat_cuti_asli) ?>"
                                                               target="_blank">
                                                 <?= basename($query->sertifikat_cuti_asli) ?>
                                             </a>
@@ -196,7 +205,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->surat_penunjukan_notaris_pengganti)): ?>
                                         <p>
-                                            File saat ini: <a
+                                            File saat ini: <a <?= $styleOverflow ?>
                                                     href="<?= base_url($query->surat_penunjukan_notaris_pengganti) ?>"
                                                     target="_blank">
                                                 <?= basename($query->surat_penunjukan_notaris_pengganti) ?>
@@ -215,7 +224,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->sk_cuti_bympd)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->sk_cuti_bympd) ?>"
+                                            File saat ini: <a <?= $styleOverflow; ?> href="<?= base_url($query->sk_cuti_bympd) ?>"
                                                               target="_blank">
                                                 <?= basename($query->sk_cuti_bympd) ?>
                                             </a>
@@ -233,7 +242,7 @@
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->lamp_syarat_cuti)): ?>
                                         <p>
-                                            File saat ini: <a href="<?= base_url($query->lamp_syarat_cuti) ?>"
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->lamp_syarat_cuti) ?>"
                                                               target="_blank">
                                                 <?= basename($query->lamp_syarat_cuti) ?>
                                             </a>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7649c7a2-5411-43df-8a83-baa285b2c0af" name="Default Changelist" comment="" />
+    <list default="true" id="7649c7a2-5411-43df-8a83-baa285b2c0af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/edit.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,12 +105,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="8065" />
+          <entry key="php" value="8132" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="8065" />
+          <entry key="PHP" value="8132" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -125,7 +129,7 @@
     <splitter split-orientation="vertical" split-proportion="0.47864768">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/controllers/Cuti.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="45">
@@ -157,11 +161,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/edit.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="63">
-                  <caret line="250" column="65" selection-start-line="250" selection-start-column="56" selection-end-line="250" selection-end-column="65" />
+                <state relative-caret-position="21">
+                  <caret line="244" column="83" selection-start-line="244" selection-start-column="83" selection-end-line="244" selection-end-column="83" />
                 </state>
               </provider>
             </entry>
@@ -196,8 +200,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/detail.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2">
-                  <caret line="143" selection-start-line="143" selection-end-line="143" />
+                <state relative-caret-position="138">
+                  <caret line="159" column="77" selection-start-line="159" selection-start-column="77" selection-end-line="159" selection-end-column="77" />
                   <folding>
                     <element signature="n#style#0;n#a#3;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -208,8 +212,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/views/users/laporaduan/edit_bypetugas.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="63">
-                  <caret line="196" column="75" selection-start-line="196" selection-start-column="75" selection-end-line="196" selection-end-column="75" />
+                <state relative-caret-position="-141">
+                  <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -326,8 +330,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>permohonan cuti</find>
-      <find>aduans</find>
       <find>aduan masyarakat</find>
       <find>pengaduan</find>
       <find>buat aduans</find>
@@ -341,7 +343,6 @@
       <find>catatan</find>
       <find>bympd</find>
       <find>sk_cuti_bympd</find>
-      <find>bype</find>
       <find>sk_cut</find>
       <find>btn-tindak</find>
       <find>id_cuti</find>
@@ -354,8 +355,11 @@
       <find>pemohon cu</find>
       <find>getno</find>
       <find>btnupda</find>
-      <find>function v</find>
       <find>thead</find>
+      <find>styleOve</find>
+      <find>function v</find>
+      <find>bype</find>
+      <find>sk cuti ole</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -412,9 +416,9 @@
         <option value="$PROJECT_DIR$/application/views/users/laporaduan/index.php" />
         <option value="$PROJECT_DIR$/application/views/users/cuti/modal_tindak_lanjut.php" />
         <option value="$PROJECT_DIR$/application/views/users/cuti/index.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Cuti.php" />
         <option value="$PROJECT_DIR$/application/views/users/cuti/detail.php" />
         <option value="$PROJECT_DIR$/application/views/users/cuti/edit.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Cuti.php" />
       </list>
     </option>
   </component>
@@ -686,12 +690,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269091000" />
+    <option name="totallyTimeSpent" value="269864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17246963" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17246963" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -704,7 +708,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49959514" weight="0.38434163" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49959514" visible="true" weight="0.46085408" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50040483" side_tool="true" weight="0.3291815" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1098,34 +1102,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/users/laporaduan/edit_bypetugas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="196" column="75" selection-start-line="196" selection-start-column="75" selection-end-line="196" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/users/cuti/modal_tindak_lanjut.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="64" column="72" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
-          <folding>
-            <element signature="n#style#0;n#a#3;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="250" column="65" selection-start-line="250" selection-start-column="56" selection-end-line="250" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -1154,6 +1134,30 @@
             <element signature="e#194#201#1" expanded="true" />
             <element signature="e#194#201#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/users/laporaduan/edit_bypetugas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-141">
+          <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="159" column="77" selection-start-line="159" selection-start-column="77" selection-end-line="159" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#a#3;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="244" column="83" selection-start-line="244" selection-start-column="83" selection-end-line="244" selection-end-column="83" />
         </state>
       </provider>
     </entry>
