@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7649c7a2-5411-43df-8a83-baa285b2c0af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/edit.php" afterDir="false" />
-    </list>
+    <list default="true" id="7649c7a2-5411-43df-8a83-baa285b2c0af" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +161,7 @@
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/edit.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="21">
-                  <caret line="244" column="83" selection-start-line="244" selection-start-column="83" selection-end-line="244" selection-end-column="83" />
+                  <caret line="226" column="76" selection-start-line="226" selection-start-column="67" selection-end-line="226" selection-end-column="76" />
                 </state>
               </provider>
             </entry>
@@ -213,7 +209,7 @@
             <entry file="file://$PROJECT_DIR$/application/views/users/laporaduan/edit_bypetugas.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-141">
-                  <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+                  <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -330,7 +326,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>aduan masyarakat</find>
       <find>pengaduan</find>
       <find>buat aduans</find>
       <find>asc</find>
@@ -360,6 +355,7 @@
       <find>function v</find>
       <find>bype</find>
       <find>sk cuti ole</find>
+      <find>styleover</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -690,7 +686,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269864000" />
+    <option name="totallyTimeSpent" value="269983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -1140,7 +1136,7 @@
     <entry file="file://$PROJECT_DIR$/application/views/users/laporaduan/edit_bypetugas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-141">
-          <caret line="137" column="19" lean-forward="true" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
+          <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1157,7 +1153,7 @@
     <entry file="file://$PROJECT_DIR$/application/views/users/cuti/edit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
-          <caret line="244" column="83" selection-start-line="244" selection-start-column="83" selection-end-line="244" selection-end-column="83" />
+          <caret line="226" column="76" selection-start-line="226" selection-start-column="67" selection-end-line="226" selection-end-column="76" />
         </state>
       </provider>
     </entry>
