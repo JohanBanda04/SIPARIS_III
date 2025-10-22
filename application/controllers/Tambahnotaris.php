@@ -32,6 +32,12 @@ class TambahNotaris extends CI_Controller
             $data['getMpdAreas'] = $this->db->get("tbl_petugas");
 
             if ($aksi == 't') {
+                $this->db->select_max('id_data_notaris', 'last_id');
+                $query = $this->db->get('tbl_data_notaris');
+                $result = $query->row();
+                $data_last_id = $result->last_id??0;
+                $data['idn'] = $data_last_id+1;
+                //echo $data['idn'];die;
                 $p = "tambah";
                 $data['judul_web'] = "REGISTRASI NOTARIS";
                 //echo "<pre>"; print_r($data['getTempatKedudukan']->result());

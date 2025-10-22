@@ -32,7 +32,10 @@ $link4 = strtolower($this->uri->segment(4));
 					<div class="form-group">
 						<label class="control-label col-lg-3">No. IDN</label>
 						<div class="col-lg-9">
-						  <input type="text" name="no_idn" class="form-control" value="" placeholder="ID Registrasi Notaris " onkeypress="return hanyaAngka(event)" required autofocus onfocus="this.value = this.value;">
+						  <input type="text" name="no_idn" class="form-control" value="<?php echo $idn; ?>"
+                                 placeholder="ID Registrasi Notaris"
+                                 onkeypress="return hanyaAngka(event)" required autofocus onfocus="this.value = this.value;"
+                                 readonly>
 						</div>
 					</div>
                   <div class="form-group">
@@ -117,7 +120,7 @@ $link4 = strtolower($this->uri->segment(4));
                     <div class="form-group">
                         <label class="control-label col-lg-3">Google Drive</label>
                         <div class="col-lg-9">
-                            <input type="text" name="google_drive" class="form-control" value="" placeholder="Google Drive Link" required>
+                            <input type="text" name="google_drive" class="form-control" value="" placeholder="Google Drive Link" >
                         </div>
                     </div>
                   <div class="form-group">

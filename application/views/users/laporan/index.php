@@ -109,7 +109,7 @@
                                     </td>
                                     <td><?php
                                         $namaNotaris = $this->db->get_where('tbl_data_notaris', array('id_user' => $baris->notaris))
-                                                ->row()->nama ?? "";
+                                                ->row()->nama."<br> id user : ".$baris->notaris ?? "Id User : ".$baris->notaris;
                                         echo $namaNotaris;
                                         ?>
                                     </td>
