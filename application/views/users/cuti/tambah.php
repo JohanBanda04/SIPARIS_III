@@ -150,7 +150,7 @@
                             <div class="form-group">
                                 <label class="col-lg-12">Dokumen Pendukung Lainnya
                                     <span class="text-danger">
-                                        <small style="font-style: italic">Dokumen berisikan : (contoh : Capture Pembayaran PNBP..dan lain lain)</small>
+                                        <small style="font-style: italic">Dokumen berisikan : (contoh : Voucher Pemesanan, Bukti Bayar PNBP.)</small>
                                     </span>
                                 </label>
                                 <div class="col-lg-12">

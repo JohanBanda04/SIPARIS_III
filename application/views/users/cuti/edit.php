@@ -238,7 +238,7 @@
 
                             <!--dokumen pendukung-->
                             <div class="form-group">
-                                <label class="col-lg-12">Dokumen Pendukung Lainnya</label>
+                                <label class="col-lg-12">Dokumen Pendukung : Voucher Pemesanan, Bukti Bayar PNBP Permohonan Cuti</label>
                                 <div class="col-lg-12">
                                     <?php if (!empty($query->lamp_syarat_cuti)): ?>
                                         <p>
@@ -249,6 +249,22 @@
                                         </p>
                                     <?php endif; ?>
                                     <input type="file" name="lamp_syarat_cuti" class="form-control"
+                                           accept=".pdf,.doc,.docx">
+                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-12">Dokumen Pendukung : Voucher Pemesanan, Bukti Bayar PNBP Notaris Pengganti</label>
+                                <div class="col-lg-12">
+                                    <?php if (!empty($query->pnbp_notaris_pengganti)): ?>
+                                        <p>
+                                            File saat ini: <a <?= $styleOverflow ?> href="<?= base_url($query->pnbp_notaris_pengganti) ?>"
+                                                              target="_blank">
+                                                <?= basename($query->pnbp_notaris_pengganti) ?>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+                                    <input type="file" name="pnbp_notaris_pengganti" class="form-control"
                                            accept=".pdf,.doc,.docx">
                                     <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
                                 </div>
