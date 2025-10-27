@@ -164,7 +164,7 @@
                     </tr>
 
                     <tr>
-                        <th valign="top">Dokumen Pendukung Lainnya</th>
+                        <th valign="top">Dokumen Pendukung : Voucher Pemesanan, Bukti Bayar PNBP Permohonan Cuti</th>
                         <th valign="top">:</th>
                         <td>
                             <?php if (!empty($query->lamp_syarat_cuti)) { ?>
@@ -172,6 +172,17 @@
                                     <i class="fa fa-download"></i> Lihat File
                                 </a>
                             <?php } else { echo "-"; } ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th valign="top">Dokumen Pendukung : Voucher Pemesanan, Bukti Bayar PNBP Notaris Pengganti</th>
+                        <th valign="top">:</th>
+                        <td>
+                            <?php if (!empty($query->pnbp_notaris_pengganti)) { ?>
+                                <a href="<?php echo base_url($query->pnbp_notaris_pengganti); ?>" target="_blank" class="btn btn-xs btn-info">
+                                    <i class="fa fa-download"></i> Lihat File
+                                </a>
+                            <?php } else { echo "Belum diupload"; } ?>
                         </td>
                     </tr>
 

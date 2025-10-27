@@ -6,6 +6,7 @@ class Users extends CI_Controller
 
     public function index()
     {
+        //echo "heylo"; die;
         $ceks = $this->session->userdata('username');
         $id_user = $this->session->userdata('id_user');
         if (!isset($ceks)) {
@@ -23,6 +24,7 @@ class Users extends CI_Controller
 
     public function v($aksi = '', $id = '')
     {
+        //return "hayhay";
         $id = hashids_decrypt($id);
         $ceks = $this->session->userdata('username');
         $id_user = $this->session->userdata('id_user');
