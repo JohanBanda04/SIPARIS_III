@@ -2,7 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Aph extends CI_Controller {
-
+    public function index()
+    {
+        if ($this->session->userdata('level') !== 'aph') { redirect('web/logout'); }
+    
+        $cekun = $this->session->userdata('username');
+    
+        // KIRIM QUERY RESULT (tanpa ->row()) supaya header.php bisa memanggil ->row()
+        $data['user'] = $this->Mcrud->get_users_by_un($cekun); // <-- no ->row()
+        $data['web']  = $this->db->get('tbl_web');             // <-- no ->row()
+    
+        $data['judul_web'] = 'Dashboard APH';
+        $data['kpi'] = [];
+    
+        $this->load->view('users/header', $data);
+        $this->load->view('users/aph', $data);  // dashboard APH
+        $this->load->view('users/footer');
+    }
     public function __construct() {
         parent::__construct();
 

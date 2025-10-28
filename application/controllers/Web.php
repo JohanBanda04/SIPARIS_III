@@ -142,7 +142,7 @@ class Web extends CI_Controller
             switch ($level) {
                 case 'sekretariat_mkn': redirect('sekretariat_mkn');       return;
                 case 'anggota_mkn':     redirect('anggota_mkn');           return;
-                case 'aph':             redirect('aph/pengajuan');         return;
+                case 'aph':             redirect('aph');         return;
                 case 'admin':           redirect('admin/dashboard');       return;
                 case 'user': redirect('dashboard'); return; // was: redirect('user/dashboard');
                 default:                redirect('dashboard');             return;
@@ -237,7 +237,7 @@ class Web extends CI_Controller
                     redirect('anggota_mkn');            // Anggota_mkn::index
                     break;
                 case 'aph':
-                    redirect('aph/pengajuan');          // Aph::form_pengajuan
+                    redirect('aph');          // Aph::form_pengajuan
                     break;
                 case 'admin':
                     redirect('admin/dashboard');

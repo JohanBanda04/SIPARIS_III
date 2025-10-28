@@ -9,18 +9,15 @@ $foto = "img/user/user-default.jpg";
 if ($level == 'user') {
     $d_k = $this->db->get_where('tbl_data_user', array('id_user' => $cek->id_user))->row();
     $foto_k = $d_k->foto;
-    if ($foto_k != '') {
-        if (file_exists("$foto_k")) {
-            $foto = $foto_k;
-        }
+    if ($foto_k != '' && file_exists("$foto_k")) {
+        $foto = $foto_k;
     }
 }
 
-$menu = strtolower($this->uri->segment(1));
-$sub_menu = strtolower($this->uri->segment(2));
+$menu      = strtolower($this->uri->segment(1));
+$sub_menu  = strtolower($this->uri->segment(2));
 $sub_menu3 = strtolower($this->uri->segment(3));
 ?>
-
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -31,6 +28,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
     <meta name="keywords" content="CV. Esotechno, <?php echo $this->Mcrud->judul_web(); ?>">
     <base href="<?php echo base_url(); ?>"/>
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon"/>
+
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="assets/panel/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -52,8 +50,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
 
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
     <link href="assets/panel/plugins/DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/panel/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css"
-          rel="stylesheet"/>
+    <link href="assets/panel/plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/parsley/src/parsley.css" rel="stylesheet"/>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
@@ -71,57 +68,89 @@ $sub_menu3 = strtolower($this->uri->segment(3));
     <link href="assets/panel/plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/select2/dist/css/select2.min.css" rel="stylesheet"/>
-    <link href="assets/panel/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
-          rel="stylesheet"/>
+    <link href="assets/panel/plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css" rel="stylesheet"/>
     <link href="assets/panel/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.css" rel="stylesheet"/>
-    <link href="assets/panel/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css"
-          rel="stylesheet"/>
-    <link href="assets/panel/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-glyphicons.css"
-          rel="stylesheet"/>
+    <link href="assets/panel/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css" rel="stylesheet"/>
+    <link href="assets/panel/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-glyphicons.css" rel="stylesheet"/>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="assets/panel/plugins/pace/pace.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- ================== END BASE JS ================== -->
+
     <link rel="stylesheet" type="text/css" href="assets/fancybox/jquery.fancybox.css">
     <link rel="stylesheet" type="text/css" href="assets/mycss/custom-tabs.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/fancybox/jquery.fancybox.js"></script>
-    <!-- header.php -->
 
+    <!-- ====== Small-Box styling (mimic AdminLTE, tidak ganggu Color Admin) ====== -->
+    <style>
+      .small-box{
+        border-radius:10px; position:relative; display:block; margin-bottom:20px; overflow:hidden; color:#fff;
+        box-shadow:0 8px 22px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.06); transition:transform .15s, box-shadow .2s;
+      }
+      .small-box:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.12), 0 6px 12px rgba(0,0,0,.08); }
+      .small-box>.inner{ padding:16px 16px 14px 16px; position:relative; z-index:2; }
+      .small-box h3{ font-size:34px; font-weight:800; margin:0 0 8px; letter-spacing:.2px; line-height:1; text-shadow:0 1px 0 rgba(0,0,0,.08); }
+      .small-box p{ font-size:15px; margin:0; opacity:.95; }
+      .small-box .icon{ position:absolute; right:12px; top:-6px; z-index:1; font-size:74px; opacity:.18; transition:opacity .2s, transform .2s; }
+      .small-box:hover .icon{ opacity:.22; transform:scale(1.04); }
+      .small-box .small-box-footer{
+        display:block; background:rgba(0,0,0,.08); color:rgba(255,255,255,.95); padding:7px 10px; text-align:center;
+        text-decoration:none; font-weight:600; letter-spacing:.2px; border-top:1px solid rgba(255,255,255,.08); position:relative; z-index:2;
+      }
+      .small-box .small-box-footer:hover{ background:rgba(0,0,0,.12); color:#fff; }
 
+      /* Palet warna glossy */
+      .bg-aqua{        background:linear-gradient(135deg,#00c0ef 0%,#00a0c8 100%)!important; }
+      .bg-green{       background:linear-gradient(135deg,#00a65a 0%,#028a4b 100%)!important; }
+      .bg-yellow{      background:linear-gradient(135deg,#f39c12 0%,#d58512 100%)!important; }
+      .bg-red{         background:linear-gradient(135deg,#dd4b39 0%,#c14132 100%)!important; }
+      .bg-blue{        background:linear-gradient(135deg,#0073b7 0%,#005e97 100%)!important; }
+      .bg-light-blue{  background:linear-gradient(135deg,#3c8dbc 0%,#2d6f97 100%)!important; }
+      .bg-orange{      background:linear-gradient(135deg,#ff851b 0%,#e26b0a 100%)!important; }
+      .bg-purple{      background:linear-gradient(135deg,#605ca8 0%,#4d4891 100%)!important; }
+      .bg-maroon{      background:linear-gradient(135deg,#d81b60 0%,#b81651 100%)!important; }
+
+      /* Khusus: hijau aktif (sebelumnya abu-abu di tema) */
+      .bg-green-active,
+      .small-box.bg-green-active{
+        background:linear-gradient(135deg,#00b86b 0%,#009c56 50%,#007d44 100%)!important;
+        color:#fff!important; box-shadow:0 6px 18px rgba(0,128,64,.25);
+      }
+      .small-box.bg-green-active:hover{
+        background:linear-gradient(135deg,#00c878 0%,#00a65a 60%,#008a4b 100%)!important;
+        box-shadow:0 8px 22px rgba(0,128,64,.35);
+      }
+
+      @media (max-width:991px){ .small-box h3{font-size:30px;} .small-box .icon{font-size:64px; right:10px; top:-2px;} }
+      @media (max-width:767px){ .small-box h3{font-size:28px;} .small-box .icon{font-size:58px; right:8px; top:0;} }
+    </style>
 </head>
 <body>
 
-<style type="text/css"></style>
 <!-- begin #page-loader -->
 <div id="page-loader" class="fade in"><span class="spinner"></span></div>
 <!-- end #page-loader -->
 
 <!-- begin #page-container -->
-<div id="page-container" class="fade page-sidebar-fixed page-header-fixed in"> <!--page-sidebar-minified-->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed in">
     <!-- begin #header -->
     <div id="header" class="header navbar navbar-default navbar-fixed-top">
-        <!-- begin container-fluid -->
         <div class="container-fluid">
-            <!-- begin mobile sidebar expand / collapse button -->
             <div class="navbar-header">
-                <a href="" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-vcard"></i></span> &nbsp;<b>Panel</b> <?php echo ucwords($level); ?>
+                <a href="" class="navbar-brand">
+                    <span class="navbar-logo"><i class="fa fa-vcard"></i></span> &nbsp;<b>Panel</b> <?= ucwords($level); ?>
                 </a>
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
             </div>
-            <!-- end mobile sidebar expand / collapse button -->
 
-            <!-- begin header navigation right -->
             <ul class="nav navbar-nav navbar-right">
-                <li  class="dropdown">
+                <li class="dropdown">
                     <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle icon" aria-expanded="false">
                         <i class="ion-ios-bell"></i>
                         <span class="label" id="jml_notif_bell">0</span>
@@ -130,382 +159,198 @@ $sub_menu3 = strtolower($this->uri->segment(3));
                 </li>
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<span class="user-image online">
-								<img src="<?php echo $foto; ?>" alt=""/>
-							</span>
-                        <span class="hidden-xs"><?php echo ucwords($nama); ?></span> <b class="caret"></b>
+                        <span class="user-image online"><img src="<?= $foto; ?>" alt=""/></span>
+                        <span class="hidden-xs"><?= ucwords($nama); ?></span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
                         <li class="arrow"></li>
-                        <li<?php if ($menu == 'profile') {
-                            echo " class='active'";
-                        } ?>><a href="profile.html"><?php if ($level == 'user') {
-                                    echo "Lengkapi ";
-                                } ?>Profile</a></li>
-                        <li<?php if ($menu == 'ubah_pass') {
-                            echo " class='active'";
-                        } ?>><a href="ubah_pass.html">Ubah Password</a></li>
-
-                        <?php
-                        if ($this->session->userdata('level') == "notaris") {
-                            ?>
-                            <li <?php if ($menu == 'dossier_pribadi') {
-                                echo " class='active'";
-                            } ?>><a href="users/dossier_pribadi.html">Dossier Pribadi</a></li>
-                            <?php
-                        }
-                        ?>
-                        <!-- <li><a href="javascript:;"><span class="badge badge-danger pull-right">2</span> Inbox</a></li> -->
-                        <!-- <li><a href="javascript:;">Calendar</a></li> -->
-                        <!-- <li><a href="javascript:;">Setting</a></li> -->
+                        <li<?= ($menu=='profile' ? " class='active'" : ""); ?>><a href="profile.html"><?= ($level=='user' ? "Lengkapi " : ""); ?>Profile</a></li>
+                        <li<?= ($menu=='ubah_pass' ? " class='active'" : ""); ?>><a href="ubah_pass.html">Ubah Password</a></li>
+                        <?php if ($this->session->userdata('level') == "notaris"): ?>
+                          <li<?= ($menu=='dossier_pribadi' ? " class='active'" : ""); ?>><a href="users/dossier_pribadi.html">Dossier Pribadi</a></li>
+                        <?php endif; ?>
                         <li class="divider"></li>
                         <li><a href="web/logout.html">Keluar</a></li>
                     </ul>
                 </li>
             </ul>
-            <!-- end header navigation right -->
         </div>
-        <!-- end container-fluid -->
     </div>
     <!-- end #header -->
 
     <!-- begin #sidebar -->
     <div id="sidebar" class="sidebar">
-        <!-- begin sidebar scrollbar -->
         <div data-scrollbar="true" data-height="100%">
             <!-- begin sidebar user -->
             <ul class="nav">
                 <li class="nav-profile">
-                    <div class="image">
-                        <a href="profile"><img src="<?php echo $foto; ?>" alt=""/></a>
-                    </div>
-                    <div class="info">
-                        <?php echo ucwords($nama); ?>
-                        <small>@<?php echo strtolower($username); ?></small>
-                    </div>
+                    <div class="image"><a href="profile"><img src="<?= $foto; ?>" alt=""/></a></div>
+                    <div class="info"><?= ucwords($nama); ?><small>@<?= strtolower($username); ?></small></div>
                 </li>
             </ul>
             <!-- end sidebar user -->
+
             <!-- begin sidebar nav -->
             <ul class="nav">
-                <!-- MENU UMUM DARI SINI -->
                 <li class="nav-header">MENU NAVIGASI</li>
-                <li class="has-sub<?php if ($menu == 'users' AND $sub_menu == '' or $menu == 'dashboard') {
-                    echo " active";
-                } ?>">
-                    <?php
-                    $cek    = $this->db->get_where('tbl_user', ['id_user' => $this->session->userdata('id_user')])->row();
-                    $level  = $cek->level;
 
-                    // Tentukan link dashboard sesuai level pengguna
-                    switch ($level) {
-                        case 'sekretariat_mkn':
-                            $dashboard_link = base_url('sekretariat/dashboard.html');
-                            break;
-                        case 'anggota_mkn':
-                            $dashboard_link = base_url('anggota_mkn/dashboard.html');
-                            break;
-                        case 'aph':
-                            $dashboard_link = base_url('aph/dashboard.html');
-                            break;
-                        default:
-                            // Untuk notaris, petugas, dan user lama → tetap seperti semula
-                            $dashboard_link = base_url('dashboard.html');
-                            break;
-                    }
-                    ?>
-
-                <li>
-                    <a href="<?= $dashboard_link ?>">
-                        <i class="ion-ios-pulse-strong"></i>
-                        <span>Dashboard</span>
+                <?php
+                // Tentukan link dashboard sesuai level pengguna (tanpa query ulang)
+                switch ($level) {
+                    case 'sekretariat_mkn':
+                        $dashboard_link = base_url('sekretariat_mkn');
+                        break;
+                    case 'anggota_mkn':
+                        $dashboard_link = base_url('anggota_mkn');
+                        break;
+                    case 'aph':
+                        $dashboard_link = base_url('aph');
+                        break;
+                    default:
+                        $dashboard_link = base_url('dashboard.html');
+                        break;
+                }
+                ?>
+                <li class="<?= (($menu=='users' && $sub_menu=='') || $menu=='dashboard') ? 'active' : ''; ?>">
+                    <a href="<?= $dashboard_link; ?>">
+                        <i class="ion-ios-pulse-strong"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                </li>
 
-                <!-- MENU UMUM SAMPAI SINI -->
-                <!-- MENU KHUSUS UNTUK APH -->
+                <!-- MENU KHUSUS APH -->
                 <?php if ($level == 'aph'): ?>
-                    <li <?php if ($menu == 'aph' AND $sub_menu == 'tambah_permohonan') { echo "class='active'"; } ?>>
-                        <a href="<?= base_url('aph/tambah_permohonan.html'); ?>">
-                            <div class="icon-img"><i class="fa fa-plus-circle bg-blue"></i></div>
-                            <span>Tambah Permohonan</span>
-                        </a>
-                    </li>
+                  <li <?= ($menu=='aph' && $sub_menu=='tambah_permohonan') ? "class='active'" : ""; ?>>
+                    <a href="<?= base_url('aph/tambah_permohonan.html'); ?>">
+                      <div class="icon-img"><i class="fa fa-plus-circle bg-blue"></i></div>
+                      <span>Tambah Permohonan</span>
+                    </a>
+                  </li>
                 <?php endif; ?>
-                <!-- AKHIR MENU KHUSUS UNTUK APH -->
+                <!-- AKHIR MENU KHUSUS APH -->
 
-                <!-- MENU SUPER ADMIN -->
+                <!-- ===== MENU SUPERADMIN (biarkan seperti semula) ===== -->
                 <?php if ($level == 'superadmin'): ?>
-                    <li <?php if ($menu == 'petugas') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="petugas/v.html">
-                            <div class="icon-img"><i class="fa fa-balance-scale bg-blue"></i></div>
-                            <span>Operator</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'tambahnotaris') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="tambahnotaris/v.html">
-                            <div class="icon-img"><i class="fa fa-user-plus bg-purple"></i></div>
-                            <span>Reg. Notaris</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'users' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="users/v.html">
-                            <div class="icon-img"><i class="fa fa-users bg-orange"></i></div>
-                            <span>Masyarakat Terdaftar</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'pengaduan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="pengaduan/v.html">
-                            <div class="icon-img"><i class="fa fa-comments bg-blue"></i></div>
-                            <span>Aduan Masyarakat</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'notaris') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="notaris/v.html">
-                            <div class="icon-img"><i class="fa fa-user-circle bg-purple"></i></div>
-                            <span>Daftar Notaris</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'laporan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="laporan/v.html">
-                            <div class="icon-img"><i class="fa fa-file-text bg-green"></i></div>
-                            <span>SLaporan Notaris</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'cuti' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-
-                        <a style="" href="cuti/v.html">
-                            <div class="icon-img"><i class="fa fa-umbrella bg-blue"></i></div>
-                            <span>Permohonan Cutis</span>
-                        </a>
-
-                    </li>
-                    <li  <?php if ($menu == 'persuratan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="persuratan/v.html">
-                            <div class="icon-img"><i class="fa fa-envelope bg-green"
-                                                     style="background-color: red !important;"></i></div>
-                            <span>PPengaduan</span>
-                        </a>
-                    </li>
-
-                    <li <?php if ($menu == 'laporaduan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="laporaduan/v.html">
-                            <div class="icon-img"><i class="fa fa-bullhorn bg-red"
-                                                     style="background-color: #e509ff !important;"></i>
-                            </div>
-                            <span>Laporan Aduanm</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-header"></li>
-                    <li <?php if ($menu == 'slide') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="slide/v.html">
-                            <div class="icon-img"><i class="fa fa-newspaper-o bg-yellow"></i></div>
-                            <span>Atur Informasi Publik</span>
-                        </a>
-                    </li>
-                    <li class="has-sub <?php if ($menu == 'kategori') {
-                        echo " active";
-                    } ?>">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-cogs bg-gray"></i>
-                            <span>Atur Kategori Aduan</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li<?php if ($menu == 'kategori' AND $sub_menu = 'v') {
-                                echo " class='active'";
-                            } ?>><a href="kategori/v.html">Kategori Aduan</a></li>
-                            <li<?php if ($menu == 'kategori' AND $sub_menu = 'sub') {
-                                echo " class='active'";
-                            } ?>><a href="kategori/sub.html">Sub Kategori</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-sub <?php if ($menu == 'kategori_lap') {
-                        echo " active";
-                    } ?>">
-                        <a href="javascript:;">
-                            <b class="caret pull-right"></b>
-                            <i class="fa fa-cogs bg-gray"></i>
-                            <span>Atur Kategori Laporan</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li<?php if ($menu == 'kategori_lap' AND $sub_menu = 'v') {
-                                echo " class='active'";
-                            } ?>><a href="kategori_lap/v.html">Kategori Laporan</a></li>
-                            <li<?php if ($menu == 'kategori_lap' AND $sub_menu = 'sub') {
-                                echo " class='active'";
-                            } ?>><a href="kategori_lap/sub.html">Sub Kategori</a></li>
-                        </ul>
-                    </li>
+                  <li <?= ($menu=='petugas') ? "class='active'" : ""; ?>>
+                    <a href="petugas/v.html"><div class="icon-img"><i class="fa fa-balance-scale bg-blue"></i></div><span>Operator</span></a>
+                  </li>
+                  <li <?= ($menu=='tambahnotaris') ? "class='active'" : ""; ?>>
+                    <a href="tambahnotaris/v.html"><div class="icon-img"><i class="fa fa-user-plus bg-purple"></i></div><span>Reg. Notaris</span></a>
+                  </li>
+                  <li <?= ($menu=='users' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="users/v.html"><div class="icon-img"><i class="fa fa-users bg-orange"></i></div><span>Masyarakat Terdaftar</span></a>
+                  </li>
+                  <li <?= ($menu=='pengaduan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="pengaduan/v.html"><div class="icon-img"><i class="fa fa-comments bg-blue"></i></div><span>Aduan Masyarakat</span></a>
+                  </li>
+                  <li <?= ($menu=='notaris') ? "class='active'" : ""; ?>>
+                    <a href="notaris/v.html"><div class="icon-img"><i class="fa fa-user-circle bg-purple"></i></div><span>Daftar Notaris</span></a>
+                  </li>
+                  <li <?= ($menu=='laporan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="laporan/v.html"><div class="icon-img"><i class="fa fa-file-text bg-green"></i></div><span>SLaporan Notaris</span></a>
+                  </li>
+                  <li <?= ($menu=='cuti' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="cuti/v.html"><div class="icon-img"><i class="fa fa-umbrella bg-blue"></i></div><span>Permohonan Cutis</span></a>
+                  </li>
+                  <li <?= ($menu=='persuratan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="persuratan/v.html"><div class="icon-img"><i class="fa fa-envelope bg-green" style="background-color:red!important;"></i></div><span>PPengaduan</span></a>
+                  </li>
+                  <li <?= ($menu=='laporaduan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="laporaduan/v.html"><div class="icon-img"><i class="fa fa-bullhorn bg-red" style="background-color:#e509ff!important;"></i></div><span>Laporan Aduanm</span></a>
+                  </li>
+                  <li class="nav-header"></li>
+                  <li <?= ($menu=='slide') ? "class='active'" : ""; ?>>
+                    <a href="slide/v.html"><div class="icon-img"><i class="fa fa-newspaper-o bg-yellow"></i></div><span>Atur Informasi Publik</span></a>
+                  </li>
+                  <li class="has-sub <?= ($menu=='kategori') ? 'active' : ''; ?>">
+                    <a href="javascript:;"><b class="caret pull-right"></b><i class="fa fa-cogs bg-gray"></i><span>Atur Kategori Aduan</span></a>
+                    <ul class="sub-menu">
+                      <li <?= ($menu=='kategori' && $sub_menu=='v') ? "class='active'" : ""; ?>><a href="kategori/v.html">Kategori Aduan</a></li>
+                      <li <?= ($menu=='kategori' && $sub_menu=='sub') ? "class='active'" : ""; ?>><a href="kategori/sub.html">Sub Kategori</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub <?= ($menu=='kategori_lap') ? 'active' : ''; ?>">
+                    <a href="javascript:;"><b class="caret pull-right"></b><i class="fa fa-cogs bg-gray"></i><span>Atur Kategori Laporan</span></a>
+                    <ul class="sub-menu">
+                      <li <?= ($menu=='kategori_lap' && $sub_menu=='v') ? "class='active'" : ""; ?>><a href="kategori_lap/v.html">Kategori Laporan</a></li>
+                      <li <?= ($menu=='kategori_lap' && $sub_menu=='sub') ? "class='active'" : ""; ?>><a href="kategori_lap/sub.html">Sub Kategori</a></li>
+                    </ul>
+                  </li>
                 <?php endif; ?>
-                <!-- akhir sesi super admin -->
-                <!-- MENU PETUGAS-->
+                <!-- ===== akhir superadmin ===== -->
+
+                <!-- MENU PETUGAS -->
                 <?php if ($level == 'petugas'): ?>
-                    <li <?php if ($menu == 'users' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="users/v.html">
-                            <div class="icon-img"><i class="fa fa-users bg-orange"></i></div>
-                            <span>Data Masyarakat</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'pengaduan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="pengaduan/v.html">
-                            <div class="icon-img"><i class="fa fa-comments bg-blue"></i></div>
-                            <span>Aduan Masyarakat</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'notaris') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="notaris/v.html">
-                            <div class="icon-img"><i class="fa fa-user-circle bg-purple"></i></div>
-                            <span>Data Notaris</span>
-                        </a>
-                    </li>
-                    <li <?php if ($menu == 'laporan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="laporan/v.html">
-                            <div class="icon-img"><i class="fa fa-file-text bg-yellow"></i></div>
-                            <span>Laporan Notaris</span>
-                        </a>
-                    </li>
+                  <li <?= ($menu=='users' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="users/v.html"><div class="icon-img"><i class="fa fa-users bg-orange"></i></div><span>Data Masyarakat</span></a>
+                  </li>
+                  <li <?= ($menu=='pengaduan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="pengaduan/v.html"><div class="icon-img"><i class="fa fa-comments bg-blue"></i></div><span>Aduan Masyarakat</span></a>
+                  </li>
+                  <li <?= ($menu=='notaris') ? "class='active'" : ""; ?>>
+                    <a href="notaris/v.html"><div class="icon-img"><i class="fa fa-user-circle bg-purple"></i></div><span>Data Notaris</span></a>
+                  </li>
+                  <li <?= ($menu=='laporan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="laporan/v.html"><div class="icon-img"><i class="fa fa-file-text bg-yellow"></i></div><span>Laporan Notaris</span></a>
+                  </li>
                 <?php endif; ?>
-                <!-- akhir sesi PETUGAS -->
+                <!-- akhir PETUGAS -->
+
                 <!-- MENU USER -->
                 <?php if ($level == 'user'): ?>
-                    <li <?php if ($menu == 'pengaduan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="pengaduan/v.html">
-                            <div class="icon-img"><i class="fa fa-comments bg-blue"></i></div>
-                            <span>Pengaduan</span>
-                        </a>
-                    </li>
-                    <li class="nav-header"></li>
-                    <li <?php if ($menu == 'notaris') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="notaris/v.html">
-                            <div class="icon-img"><i class="fa fa-info-circle bg-purple"></i></div>
-                            <span>Daftar Notaris-NTB</span>
-                        </a>
-                    </li>
+                  <li <?= ($menu=='pengaduan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="pengaduan/v.html"><div class="icon-img"><i class="fa fa-comments bg-blue"></i></div><span>Pengaduan</span></a>
+                  </li>
+                  <li class="nav-header"></li>
+                  <li <?= ($menu=='notaris') ? "class='active'" : ""; ?>>
+                    <a href="notaris/v.html"><div class="icon-img"><i class="fa fa-info-circle bg-purple"></i></div><span>Daftar Notaris-NTB</span></a>
+                  </li>
                 <?php endif; ?>
-                <li <?php if ($menu == 'laporaduan' AND $sub_menu == 'v') {
-                    echo " class='active'";
-                } ?>>
-                    <a href="laporaduan/v.html">
-                        <div class="icon-img"><i class="fa fa-bullhorn bg-red"
-                                                 style="background-color: #e509ff !important;"></i>
-                        </div>
-                        <span>Laporan Aduanm</span>
-                    </a>
+                <!-- akhir USER -->
+
+                <!-- Menu umum -->
+                <li <?= ($menu=='laporaduan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                  <a href="laporaduan/v.html"><div class="icon-img"><i class="fa fa-bullhorn bg-red" style="background-color:#e509ff!important;"></i></div><span>Laporan Aduanm</span></a>
                 </li>
 
-                <li <?php if ($menu == 'cuti' AND $sub_menu == 'v') {
-                    echo " class='active'";
-                } ?>>
-                    <?php
-                    $display = '';
-
-                    // Sembunyikan menu cuti untuk APH dan USER
-                    if ($level == "aph" || $level == "user") {
-                        $display = 'display: none;';
-                    }
-                    ?>
-                    <a style="<?= $display ?>" href="cuti/v.html">
-                        <div class="icon-img"><i class="fa fa-umbrella bg-blue"></i></div>
-                        <span>Permohonan Cuti</span>
-                    </a>
+                <li <?= ($menu=='cuti' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                  <?php $display = ($level=="aph" || $level=="user") ? 'display: none;' : ''; ?>
+                  <a style="<?= $display; ?>" href="cuti/v.html"><div class="icon-img"><i class="fa fa-umbrella bg-blue"></i></div><span>Permohonan Cuti</span></a>
                 </li>
-                <!-- MENU NOTARIS -->
+                <!-- akhir umum -->
+
+                <!-- AKHIR MENU NOTARIS -->
                 <?php if ($level == 'notaris'): ?>
-                    <li <?php if ($menu == 'laporan' AND $sub_menu == 'v') {
-                        echo " class='active'";
-                    } ?>>
-                        <a href="laporan/v.html">
-                            <div class="icon-img"><i class="fa fa-file-text bg-blue"></i></div>
-                            <span>LAPORANnn</span>
-                        </a>
-
-                    </li>
-
-                    <li>
-                        <?php
-                        $id_user = $this->session->userdata('id_user');
-                        $row = $this->db->get_where('tbl_gdrive', array('user_id' => $id_user))->row();
-
-                        $getLinkGdrive = $row ? $row->link_gdrive : null;
-
-                        if (!empty($getLinkGdrive)) {
-                            $href = $getLinkGdrive;
-                            $target = 'target="_blank"';
-                            $class = '';
-                        } else {
-                            $href = '#';
-                            $target = '';
-                            $class = 'disabled';
-                        }
-                        ?>
-                        <style>
-                            a.disabled {
-                                pointer-events: none;
-                                opacity: 0.5;
-                                cursor: not-allowed;
-                            }
-                        </style>
-                        <a href="<?= $href; ?>" <?= $target; ?> class="<?= $class; ?>">
-                            <div class="icon-img"><i class="fa fa-google bg-orange"></i></div>
-                            <span>Penyimpanan</span>
-                        </a>
-
-                    </li>
+                  <li <?= ($menu=='laporan' && $sub_menu=='v') ? "class='active'" : ""; ?>>
+                    <a href="laporan/v.html"><div class="icon-img"><i class="fa fa-file-text bg-blue"></i></div><span>LAPORANnn</span></a>
+                  </li>
+                  <li>
+                    <?php
+                      $id_user = $this->session->userdata('id_user');
+                      $row = $this->db->get_where('tbl_gdrive', array('user_id' => $id_user))->row();
+                      $getLinkGdrive = $row ? $row->link_gdrive : null;
+                      $href = !empty($getLinkGdrive) ? $getLinkGdrive : '#';
+                      $target = !empty($getLinkGdrive) ? 'target="_blank"' : '';
+                      $class  = !empty($getLinkGdrive) ? '' : 'disabled';
+                    ?>
+                    <style>.disabled{pointer-events:none;opacity:.5;cursor:not-allowed;}</style>
+                    <a href="<?= $href; ?>" <?= $target; ?> class="<?= $class; ?>">
+                      <div class="icon-img"><i class="fa fa-google bg-orange"></i></div><span>Penyimpanan</span>
+                    </a>
+                  </li>
                 <?php endif; ?>
+                <!-- akhir NOTARIS -->
 
-                <!-- AKHIR MENU NOTARIS-->
                 <li class="nav-header"></li>
                 <li>
-                    <a href="web/logout.html">
-                        <div class="icon-img">
-                            <i class="fa fa-sign-out bg-red"></i>
-                        </div>
-                        <span>Keluar</span>
-                    </a>
+                  <a href="web/logout.html"><div class="icon-img"><i class="fa fa-sign-out bg-red"></i></div><span>Keluar</span></a>
                 </li>
+
                 <!-- begin sidebar minify button -->
-                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
-                                class="ion-ios-arrow-left"></i> <span>Kecilkan</span></a></li>
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ion-ios-arrow-left"></i> <span>Kecilkan</span></a></li>
                 <!-- end sidebar minify button -->
             </ul>
             <!-- end sidebar nav -->
         </div>
-        <!-- end sidebar scrollbar -->
     </div>
     <div class="sidebar-bg"></div>
     <!-- end #sidebar -->

@@ -70,10 +70,10 @@ $route['anggota_mkn/periksa/(:num)']       = 'Anggota_mkn/periksa/$1';
 $route['anggota_mkn/simpan']               = 'Anggota_mkn/simpan_pemeriksaan';
 
 /* APH */
-$route['aph/pengajuan']                    = 'Aph/form_pengajuan';
-$route['aph/pengajuan.html']               = 'Aph/form_pengajuan';
-$route['aph/simpan_pengajuan']             = 'Aph/simpan_pengajuan';
-
+/* APH */
+$route['aph']           = 'Aph/index';           // dashboard
+$route['aph/dashboard'] = 'Aph/index';           // alias
+$route['aph/pengajuan'] = 'Aph/form_pengajuan';  // form pengajuan
 /*
 |---------------------------------------------------------------------------
 | LOGIN & REGISTER (termasuk variasi .html)
