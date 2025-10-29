@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7649c7a2-5411-43df-8a83-baa285b2c0af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Cuti.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Cuti.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/detail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/tambah.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/tambah.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/users/cuti/modal_upload_pnbp_notarispengganti.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/users/cuti/modal_upload_pnbp_notarispengganti.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,22 +129,22 @@
     <session id="2089032339">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="php" value="11" />
+          <entry key="php" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="11" />
+          <entry key="PHP" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="655" />
+          <entry key="php" value="676" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="655" />
+          <entry key="PHP" value="676" />
         </counts>
       </usages-collector>
     </session>
@@ -162,26 +156,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/controllers/Cuti.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="29">
-                  <caret line="51" column="10" selection-end-line="741" />
-                  <folding>
-                    <element signature="e#143#150#1" expanded="true" />
-                    <element signature="e#144#151#1" expanded="true" />
-                    <element signature="e#144#151#1" expanded="true" />
-                    <element signature="e#205#212#1" expanded="true" />
-                    <element signature="e#197#204#1" expanded="true" />
-                    <element signature="e#197#204#1" expanded="true" />
-                    <element signature="e#143#150#1" expanded="true" />
-                    <element signature="e#144#151#1" expanded="true" />
-                    <element signature="e#144#151#1" expanded="true" />
-                    <element signature="e#211#218#1" expanded="true" />
-                    <element signature="e#210#217#1" expanded="true" />
-                    <element signature="e#219#226#1" expanded="true" />
-                    <element signature="e#203#210#1" expanded="true" />
-                    <element signature="e#202#209#1" expanded="true" />
-                    <element signature="e#194#201#1" expanded="true" />
-                    <element signature="e#194#201#1" expanded="true" />
-                  </folding>
+                <state relative-caret-position="-345">
+                  <caret line="29" selection-end-line="741" />
                 </state>
               </provider>
             </entry>
@@ -202,15 +178,13 @@
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/index.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="29">
-                  <caret line="188" column="31" lean-forward="true" selection-end-line="287" />
+                  <caret line="190" column="23" lean-forward="true" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="23" />
                   <folding>
                     <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#span#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#4;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#a#1;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#a#4;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -219,12 +193,10 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/modal_upload_pnbp_notarispengganti.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="21">
-                  <caret line="132" column="18" lean-forward="true" selection-start-line="127" selection-start-column="11" selection-end-line="132" selection-end-column="18" />
+                <state relative-caret-position="80">
+                  <caret line="22" column="140" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="146" />
                   <folding>
-                    <element signature="e#825#832#1#HTML" expanded="true" />
-                    <element signature="e#1714#1720#0#HTML" expanded="true" />
-                    <element signature="e#1721#1727#0#HTML" expanded="true" />
+                    <element signature="n#style#0;n#small#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -242,8 +214,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/application/views/users/cuti/detail.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
-                  <caret line="178" column="47" lean-forward="true" selection-end-line="218" />
+                <state relative-caret-position="104">
+                  <caret line="182" column="47" lean-forward="true" selection-end-line="218" />
                 </state>
               </provider>
             </entry>
@@ -328,7 +300,7 @@
             <entry file="file://$PROJECT_DIR$/application/views/users/laporan/index.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="42">
-                  <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+                  <caret line="113" column="36" lean-forward="true" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
                   <folding>
                     <element signature="n#style#0;n#a#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
@@ -406,8 +378,8 @@
       <find>function index</find>
       <find>dOKUMEN PE</find>
       <find>lamp_syarat_cuti</find>
-      <find>btn-hapus</find>
       <find>voucher</find>
+      <find>btn-hapus</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -724,10 +696,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291250000" />
+    <option name="totallyTimeSpent" value="292788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18461539" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -742,7 +715,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49959514" visible="true" weight="0.46085408" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49959514" weight="0.46085408" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50040483" side_tool="true" weight="0.3291815" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1086,33 +1059,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Cuti.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="51" column="10" selection-end-line="741" />
-          <folding>
-            <element signature="e#143#150#1" expanded="true" />
-            <element signature="e#144#151#1" expanded="true" />
-            <element signature="e#144#151#1" expanded="true" />
-            <element signature="e#205#212#1" expanded="true" />
-            <element signature="e#197#204#1" expanded="true" />
-            <element signature="e#197#204#1" expanded="true" />
-            <element signature="e#143#150#1" expanded="true" />
-            <element signature="e#144#151#1" expanded="true" />
-            <element signature="e#144#151#1" expanded="true" />
-            <element signature="e#211#218#1" expanded="true" />
-            <element signature="e#210#217#1" expanded="true" />
-            <element signature="e#219#226#1" expanded="true" />
-            <element signature="e#203#210#1" expanded="true" />
-            <element signature="e#202#209#1" expanded="true" />
-            <element signature="e#194#201#1" expanded="true" />
-            <element signature="e#194#201#1" expanded="true" />
-          </folding>
+        <state relative-caret-position="-345">
+          <caret line="29" selection-end-line="741" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/users/laporan/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
-          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+          <caret line="113" column="36" lean-forward="true" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#a#0;n#div#4;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -1128,8 +1083,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/users/cuti/detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="178" column="47" lean-forward="true" selection-end-line="218" />
+        <state relative-caret-position="104">
+          <caret line="182" column="47" lean-forward="true" selection-end-line="218" />
         </state>
       </provider>
     </entry>
@@ -1137,22 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12">
           <caret line="244" column="82" selection-end-line="328" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="188" column="31" lean-forward="true" selection-end-line="287" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#4;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1166,14 +1105,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/users/cuti/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="190" column="23" lean-forward="true" selection-start-line="190" selection-start-column="23" selection-end-line="190" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#4;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/users/cuti/modal_upload_pnbp_notarispengganti.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="132" column="18" lean-forward="true" selection-start-line="127" selection-start-column="11" selection-end-line="132" selection-end-column="18" />
+        <state relative-caret-position="80">
+          <caret line="22" column="140" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="146" />
           <folding>
-            <element signature="e#825#832#1#HTML" expanded="true" />
-            <element signature="e#1714#1720#0#HTML" expanded="true" />
-            <element signature="e#1721#1727#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#small#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

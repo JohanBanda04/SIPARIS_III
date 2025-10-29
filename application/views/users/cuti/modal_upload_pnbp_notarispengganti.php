@@ -16,10 +16,11 @@
                     <!-- Hidden field -->
                     <input type="hidden" name="id_cuti" id="pnbp_id_cuti">
 
-                    <!-- Upload Field -->
+                    <!-- Upload Field Bukti Bayar-->
                     <div class="form-group">
                         <label for="pnbp_file" class="font-weight-bold">
-                            Pilih File Bukti Bayar (PDF / Word / Gambar)
+                            Pilih File Bukti Bayar (PDF / Word / Gambar)<br>
+                            <small style="color: red!important;">Dokumen Pendukung : Voucher Pemesanan, Bukti Bayar PNBP Notaris Pengganti</small>
                         </label>
                         <input type="file"
                                name="pnbp_file"
