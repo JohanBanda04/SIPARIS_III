@@ -23,7 +23,7 @@
 
                         <form class="form-horizontal" action="" data-parsley-validate="true" method="post" enctype="multipart/form-data">
                             <div class="alert alert-success">
-                                <strong>Note :</strong> Pastikan Berkas Cuti Anda Sudah Lengkap.!
+                                <strong>Note :</strong> Pastikan Berkas Cuti Anda Sudah Lengkap!
                             </div>
                             <br>
 
@@ -31,8 +31,7 @@
                             <div class="form-group">
                                 <label class="col-lg-12">Alasan Cuti <span class="text-danger">*</span></label>
                                 <div class="col-lg-12">
-                                    <input type="text" name="alasan_cuti" class="form-control"
-                                           placeholder="Alasan Cuti" required autofocus>
+                                    <input type="text" name="alasan_cuti" class="form-control" placeholder="Alasan Cuti" required autofocus>
                                 </div>
                             </div>
 
@@ -41,7 +40,6 @@
                                 <label class="col-lg-12">Pemohon Cuti <span class="text-danger">*</span></label>
                                 <div class="col-lg-12">
                                     <select class="form-control default-select2" name="id_pemohon" id="id_pemohon" required>
-                                        <!--<option value="">- Pilih -</option>-->
                                         <?php foreach ($getNotaris as $not): ?>
                                             <option value="<?= $not->id_user ?>"
                                                 <?= ($this->session->userdata('id_user') == $not->id_user) ? 'selected="selected"' : 'disabled' ?>>
@@ -50,8 +48,8 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-
                             </div>
+
                             <!-- Tanggal Cuti -->
                             <div class="form-group">
                                 <!-- Kolom kiri: Tanggal Awal -->
@@ -102,20 +100,17 @@
 
                             <div class="form-group">
                                 <label class="col-lg-12">SK Pengangkatan/Perpindahan Notaris
-                                    <span class="text-danger">
-                                        <small style="font-style: italic">*</small>
-                                    </span>
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-lg-12">
                                     <input type="file" name="sk_pengangkatan_notaris" class="form-control" accept=".pdf,.jpg,.png" required>
                                     <small class="text-muted">Format diperbolehkan: PDF, JPG, PNG</small>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label class="col-lg-12">Berita Acara Sumpah
-                                    <span class="text-danger">
-                                        <small style="font-style: italic">*</small>
-                                    </span>
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-lg-12">
                                     <input type="file" name="berita_acara_sumpah" class="form-control" accept=".pdf,.jpg,.png" required>
@@ -125,9 +120,7 @@
 
                             <div class="form-group">
                                 <label class="col-lg-12">Sertifikat Cuti Asli
-                                    <span class="text-danger">
-                                        <small style="font-style: italic">*</small>
-                                    </span>
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <div class="col-lg-12">
                                     <input type="file" name="sertifikat_cuti_asli" class="form-control" accept=".pdf,.jpg,.png" required>
@@ -138,7 +131,9 @@
                             <div class="form-group">
                                 <label class="col-lg-12">Dokumen Penunjukan Notaris Pengganti
                                     <span class="text-danger">
-                                        <small style="font-style: italic">Dokumen berisikan : Ijazah Sarjana Hukum,KTP,SKCK,Surat Keterangan Sehat,Pasphoto 3x4 latar biru,Daftar CV,Surat keterangan bekerja min. 24 bulan</small>
+                                        <small style="font-style: italic">
+                                            Dokumen berisikan: Ijazah Sarjana Hukum, KTP, SKCK, Surat Keterangan Sehat, Pasphoto 3x4 latar biru, Daftar CV, Surat keterangan bekerja min. 24 bulan
+                                        </small>
                                     </span>
                                 </label>
                                 <div class="col-lg-12">
@@ -150,7 +145,9 @@
                             <div class="form-group">
                                 <label class="col-lg-12">Dokumen Pendukung Lainnya
                                     <span class="text-danger">
-                                        <small style="font-style: italic">Dokumen berisikan : (contoh : Capture Pembayaran PNBP..dan lain lain)</small>
+                                        <small style="font-style: italic">
+                                            Dokumen berisikan: (contoh: Voucher Pemesanan, Bukti Bayar PNBP, Capture Pembayaran PNBP, dan lain-lain)
+                                        </small>
                                     </span>
                                 </label>
                                 <div class="col-lg-12">
@@ -171,7 +168,6 @@
 
     </div>
 </div>
-
 
 <script>
     $(document).ready(function(){

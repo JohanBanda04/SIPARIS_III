@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Web extends CI_Controller
 {
-
     public function index()
     {
         $data['judul_web'] = $this->Mcrud->judul_web();
@@ -73,21 +72,20 @@ class Web extends CI_Controller
             $cek_data2 = $this->db->get_where('tbl_user', array('username' => $username));
             $simpan = 'y';
             $pesan  = '';
+
             if ($cek_data->num_rows() != 0) {
                 $simpan = 'n';
                 $pesan  = "No. NIK '<b>$no_ktp</b>' Sudah Terdaftar!";
             } elseif ($cek_data2->num_rows() != 0) {
                 $simpan = 'n';
                 $pesan  = "Username '<b>$username</b>' Sudah Terdaftar!";
-            } else {
-                if ($pass != $pass2) {
-                    $simpan = 'n';
-                    $pesan  = "Password tidak cocok!";
-                }
+            } elseif ($pass != $pass2) {
+                $simpan = 'n';
+                $pesan  = "Password tidak cocok!";
             }
+
             $level = 'user';
             if ($simpan == 'y') {
-                // NOTE: menyimpan apa adanya (plaintext) agar kompatibel dengan sistem lama
                 $data = array(
                     'nama_lengkap' => $nama,
                     'username'     => $username,
@@ -131,21 +129,19 @@ class Web extends CI_Controller
             }
             redirect("web/login");
         }
-
     }
 
     public function login()
     {
-        // Jika sudah login, arahkan sesuai role (bukan selalu ke /dashboard)
         if ($this->session->userdata('username')) {
             $level = $this->session->userdata('level');
             switch ($level) {
-                case 'sekretariat_mkn': redirect('sekretariat_mkn');       return;
-                case 'anggota_mkn':     redirect('anggota_mkn');           return;
-                case 'aph':             redirect('aph');         return;
-                case 'admin':           redirect('admin/dashboard');       return;
-                case 'user': redirect('dashboard'); return; // was: redirect('user/dashboard');
-                default:                redirect('dashboard');             return;
+                case 'sekretariat_mkn': redirect('sekretariat_mkn'); return;
+                case 'anggota_mkn':     redirect('anggota_mkn');     return;
+                case 'aph':             redirect('aph');             return;
+                case 'admin':           redirect('admin/dashboard'); return;
+                case 'user':            redirect('dashboard');       return;
+                default:                redirect('dashboard');       return;
             }
         }
 
@@ -161,7 +157,6 @@ class Web extends CI_Controller
             $query  = $this->Mcrud->get_users_by_un($username);
             $jumlah = $query->num_rows();
 
-            // Cegah akses index sebelum jumlah dicek
             if ($jumlah == 0) {
                 $this->session->set_flashdata('msg',
                     '<div class="alert alert-danger alert-dismissible" role="alert">
@@ -175,18 +170,9 @@ class Web extends CI_Controller
             }
 
             $row = $query->row();
-
-            // Akun belum aktif
             if ($row->aktif == '0') {
-                if ($row->level == 'user') {
-                    $email = $this->db->get_where('tbl_data_user', array('id_user' => $row->id_user))->row()->email;
-                    $tgl   = date('Y-m-d');
-                    $id    = md5("$email * $tgl");
-                    $link  = base_url() . "web/verify/$id/$email/kirim";
-                    $pesan = "belum diaktifkan, Aktifkan Akun dengan cara Klik => <b><a href='$link'>Kirim Aktivasi Akun ke email</a></b>";
-                } else {
-                    $pesan = "tidak aktif";
-                }
+                $pesan = ($row->level == 'user') ?
+                    "belum diaktifkan, silakan aktifkan akun melalui email." : "tidak aktif.";
                 $this->session->set_flashdata('msg',
                     '<div class="alert alert-danger alert-dismissible" role="alert">
                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -198,15 +184,7 @@ class Web extends CI_Controller
                 redirect('web/login');
             }
 
-            // Verifikasi password
-            // Kompatibel: plaintext (lama) atau MD5 (seed awal).
-            $pass_match = false;
-            if ($row->password === $pass) {
-                $pass_match = true;
-            } elseif ($row->password === md5($pass)) {
-                $pass_match = true;
-            }
-
+            $pass_match = ($row->password === $pass || $row->password === md5($pass));
             if (!$pass_match) {
                 $this->session->set_flashdata('msg',
                     '<div class="alert alert-warning alert-dismissible" role="alert">
@@ -219,7 +197,6 @@ class Web extends CI_Controller
                 redirect('web/login');
             }
 
-            // Set session lengkap
             $this->session->set_userdata([
                 'username'       => $row->username,
                 'id_user'        => $row->id_user,
@@ -228,26 +205,12 @@ class Web extends CI_Controller
                 'logged_in'      => TRUE,
             ]);
 
-            // Redirect sesuai role (rute baru MKN + role lain tetap)
             switch ($row->level) {
-                case 'sekretariat_mkn':
-                    redirect('sekretariat_mkn');        // Sekretariat_mkn::index
-                    break;
-                case 'anggota_mkn':
-                    redirect('anggota_mkn');            // Anggota_mkn::index
-                    break;
-                case 'aph':
-                    redirect('aph');          // Aph::form_pengajuan
-                    break;
-                case 'admin':
-                    redirect('admin/dashboard');
-                    break;
-                    case 'user':
-                        redirect('dashboard'); // was: redirect('user/dashboard');
-                        break;                
-                default:
-                    redirect('dashboard');
-                    break;
+                case 'sekretariat_mkn': redirect('sekretariat_mkn'); break;
+                case 'anggota_mkn':     redirect('anggota_mkn');     break;
+                case 'aph':             redirect('aph');             break;
+                case 'admin':           redirect('admin/dashboard'); break;
+                default:                redirect('dashboard');       break;
             }
         }
     }
@@ -274,26 +237,24 @@ class Web extends CI_Controller
         $this->db->order_by('id_notif', 'DESC');
         $data['query'] = $this->db->get_where('tbl_notif', array('penerima' => $id_user));
         $jml_notif_baru = 0;
-        foreach ($data['query']->result() as $key => $value) {
+
+        foreach ($data['query']->result() as $value) {
             if (!preg_match("/$id_user/i", $value->hapus_notif)) {
                 $jml_notif_baru++;
             }
         }
-        foreach ($data['query']->result() as $key => $value) {
+        foreach ($data['query']->result() as $value) {
             if (preg_match("/$id_user/i", $value->baca_notif)) {
                 $jml_notif_baru--;
             }
         }
+
         $data['jml_notif'] = $jml_notif_baru;
         if ($aksi == 'pesan_baru') {
             $jml_notif_bell = $this->session->userdata('jml_notif_bell');
             $stt = ($jml_notif_bell >= $jml_notif_baru) ? '0' : '1';
             $this->session->set_userdata('jml_notif_bell', "$jml_notif_baru");
-            if ($id_user == '') {
-                echo '11';
-            } else {
-                echo $stt;
-            }
+            echo ($id_user == '') ? '11' : $stt;
         } elseif ($aksi == 'jml') {
             echo number_format($jml_notif_baru, 0, ",", ".");
         } else {
@@ -303,10 +264,10 @@ class Web extends CI_Controller
 
     public function notif($aksi = '', $id = '')
     {
-        $id     = hashids_decrypt($id);
-        $level  = $this->session->userdata('level');
-        $ceks   = $this->session->userdata('username');
-        $id_user= $this->session->userdata('id_user');
+        $id      = hashids_decrypt($id);
+        $level   = $this->session->userdata('level');
+        $ceks    = $this->session->userdata('username');
+        $id_user = $this->session->userdata('id_user');
         if (!isset($ceks)) {
             redirect('web/login');
         } else {
@@ -315,11 +276,7 @@ class Web extends CI_Controller
             $data['judul_web'] = "Notifikasi";
 
             $this->db->order_by('id_notif', 'DESC');
-            if ($level=="superadmin") {
-                $data['query'] = $this->db->get_where('tbl_notif', array('penerima' => $id_user));
-            } else if($level=="petugas"){
-                $data['query'] = $this->db->get_where('tbl_notif', array('penerima' => $id_user));
-            }
+            $data['query'] = $this->db->get_where('tbl_notif', array('penerima' => $id_user));
 
             if ($aksi == 'h' or $aksi == 'h_all') {
                 if ($aksi == 'h') {
@@ -335,7 +292,7 @@ class Web extends CI_Controller
                             $this->db->update('tbl_notif', $data, array('id_notif' => $id));
                         }
                     } else {
-                        foreach ($cek_data->result() as $key => $value) {
+                        foreach ($cek_data->result() as $value) {
                             $h_notif = $value->hapus_notif;
                             if (!preg_match("/$id_user/i", $h_notif)) {
                                 $data = array('hapus_notif' => "$id_user, $h_notif");
@@ -353,11 +310,7 @@ class Web extends CI_Controller
                     );
                     redirect("web/notif");
                 } else {
-                    if ($aksi == 'h') {
-                        redirect('404_content');
-                    } else {
-                        redirect("web/notif");
-                    }
+                    ($aksi == 'h') ? redirect('404_content') : redirect("web/notif");
                 }
             }
 
@@ -366,5 +319,4 @@ class Web extends CI_Controller
             $this->load->view('users/footer');
         }
     }
-
 }

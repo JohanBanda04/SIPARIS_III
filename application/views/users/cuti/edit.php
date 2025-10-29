@@ -28,7 +28,7 @@
                         <form class="form-horizontal" action="" data-parsley-validate="true" method="post"
                               enctype="multipart/form-data">
                             <div class="alert alert-success">
-                                <strong>Note :</strong> Pastikan Berkas Cuti Anda Sudah Lengkap.!
+                                <strong>Note :</strong> Pastikan Berkas Cuti Anda Sudah Lengkap!
                             </div>
                             <br>
 
@@ -48,7 +48,6 @@
                                 <label class="col-lg-12">Pemohon Cuti <span class="text-danger">*</span></label>
                                 <div class="col-lg-12">
                                     <select class="form-control default-select2" name="id_pemohon" id="id_pemohon" required>
-                                        <!--<option value="">- Pilih -</option>-->
                                         <?php foreach ($getNotaris as $not): ?>
                                             <option value="<?= $not->id_user ?>"
                                                 <?= ($this->session->userdata('id_user') == $not->id_user) ? 'selected="selected"' : 'disabled' ?>>
@@ -57,11 +56,10 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-
                             </div>
+
                             <!-- Tanggal Cuti -->
                             <div class="form-group">
-                                <!-- Kolom kiri: Tanggal Awal -->
                                 <div class="col-lg-4">
                                     <label>Tanggal Awal Cuti <span class="text-danger">*</span></label>
                                     <div class="input-group date" id="tgl_awal_picker">
@@ -72,7 +70,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Kolom tengah: Tanggal Akhir -->
                                 <div class="col-lg-4">
                                     <label>Tanggal Akhir Cuti <span class="text-danger">*</span></label>
                                     <div class="input-group date" id="tgl_akhir_picker">
@@ -83,7 +80,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Kolom kanan: Jumlah Hari -->
                                 <div class="col-lg-4">
                                     <label>Jumlah Hari Cuti</label>
                                     <input type="text" class="form-control" id="jumlah_hari" name="jumlah_hari"
@@ -95,107 +91,39 @@
                             <div class="form-group">
                                 <label class="col-lg-12">Keterangan <span class="text-danger">*</span></label>
                                 <div class="col-lg-12">
-                                    <textarea name="ket_laporan" class="form-control" rows="4" placeholder="Keterangan..."
-                                              required><?= $query->keterangan ?></textarea>
-
+                                    <textarea name="ket_laporan" class="form-control" rows="4"
+                                              placeholder="Keterangan..." required><?= $query->keterangan ?></textarea>
                                 </div>
                             </div>
 
-                            <!-- Lampiran Surat Permohonan Cuti-->
-                            <div class="form-group">
-                                <label class="col-lg-12">Surat Permohonan Cuti</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->surat_permohonan_cuti)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->surat_permohonan_cuti) ?>" target="_blank">
-                                                <?= basename($query->surat_permohonan_cuti) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="surat_permohonan_cuti" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
+                            <!-- Lampiran File -->
+                            <?php
+                            $files = [
+                                'surat_permohonan_cuti' => 'Surat Permohonan Cuti',
+                                'sk_pengangkatan_notaris' => 'SK Pengangkatan Notaris',
+                                'berita_acara_sumpah' => 'Berita Acara Sumpah',
+                                'sertifikat_cuti_asli' => 'Sertifikat Cuti Asli',
+                                'surat_penunjukan_notaris_pengganti' => 'Surat Penunjukan Notaris Pengganti',
+                                'sk_cuti_bympd' => 'SK Cuti oleh MPD',
+                                'lamp_syarat_cuti' => 'Dokumen Pendukung Lainnya',
+                                'pnbp_notaris_pengganti' => 'Dokumen Pendukung: PNBP Notaris Pengganti'
+                            ];
+                            foreach ($files as $field => $label): ?>
+                                <div class="form-group">
+                                    <label class="col-lg-12"><?= $label ?></label>
+                                    <div class="col-lg-12">
+                                        <?php if (!empty($query->$field)): ?>
+                                            <p>File saat ini: 
+                                                <a href="<?= base_url($query->$field) ?>" target="_blank">
+                                                    <?= basename($query->$field) ?>
+                                                </a>
+                                            </p>
+                                        <?php endif; ?>
+                                        <input type="file" name="<?= $field ?>" class="form-control" accept=".pdf,.doc,.docx">
+                                        <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <!--sk_pengangkatan_notaris-->
-                            <div class="form-group">
-                                <label class="col-lg-12">SK Pengangkatan Notaris</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->sk_pengangkatan_notaris)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->sk_pengangkatan_notaris) ?>" target="_blank">
-                                                <?= basename($query->sk_pengangkatan_notaris) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="sk_pengangkatan_notaris" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
-                                </div>
-                            </div>
-
-                            <!--berita_acara_sumpah-->
-                            <div class="form-group">
-                                <label class="col-lg-12">Berita Acara Sumpah</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->berita_acara_sumpah)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->berita_acara_sumpah) ?>" target="_blank">
-                                                <?= basename($query->berita_acara_sumpah) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="berita_acara_sumpah" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
-                                </div>
-                            </div>
-
-                            <!--sertifikat_cuti_asli-->
-                            <div class="form-group">
-                                <label class="col-lg-12">Sertifikat Cuti Asli</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->sertifikat_cuti_asli)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->sertifikat_cuti_asli) ?>" target="_blank">
-                                                <?= basename($query->sertifikat_cuti_asli) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="sertifikat_cuti_asli" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
-                                </div>
-                            </div>
-
-                            <!--surat_penunjukan_notaris_pengganti-->
-                            <div class="form-group">
-                                <label class="col-lg-12">Surat Penunjukan Notaris Pengganti</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->surat_penunjukan_notaris_pengganti)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->surat_penunjukan_notaris_pengganti) ?>" target="_blank">
-                                                <?= basename($query->surat_penunjukan_notaris_pengganti) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="surat_penunjukan_notaris_pengganti" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
-                                </div>
-                            </div>
-
-                            <!--dokumen pendukung-->
-                            <div class="form-group">
-                                <label class="col-lg-12">Dokumen Pendukung Lainnya</label>
-                                <div class="col-lg-12">
-                                    <?php if (!empty($query->lamp_syarat_cuti)): ?>
-                                        <p>
-                                            File saat ini: <a href="<?= base_url($query->lamp_syarat_cuti) ?>" target="_blank">
-                                                <?= basename($query->lamp_syarat_cuti) ?>
-                                            </a>
-                                        </p>
-                                    <?php endif; ?>
-                                    <input type="file" name="lamp_syarat_cuti" class="form-control" accept=".pdf,.doc,.docx">
-                                    <small class="text-muted">Kosongkan jika tidak ingin ganti.</small>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
 
                             <hr>
                             <a href="<?php echo strtolower($this->uri->segment(1)); ?>/<?php echo strtolower($this->uri->segment(2)); ?>.html"
@@ -211,7 +139,6 @@
 
     </div>
 </div>
-
 
 <script>
     $(document).ready(function () {

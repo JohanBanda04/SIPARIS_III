@@ -66,7 +66,7 @@ $link4 = strtolower($this->uri->segment(4));
                                 ?>
                                 <tr>
                                     <td><b><?php echo $no++; ?>.</b></td>
-                                    <td><?php echo $baris->nama; ?></td>
+                                    <td><?php echo $baris->nama." <br>Id User: ".$baris->id_user; ?></td>
                                     <td><?php echo $baris->no_sk; ?></td>
                                     <td><?php echo $baris->alamat_notaris; ?></td>
                                     <td>
