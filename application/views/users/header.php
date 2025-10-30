@@ -109,7 +109,7 @@ $sub_menu3 = strtolower($this->uri->segment(3));
         <div class="container-fluid">
             <!-- begin mobile sidebar expand / collapse button -->
             <div class="navbar-header">
-                <a href="" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-vcard"></i></span> &nbsp;<b>Panel</b> <?php echo ucwords($level); ?>
+                <a href="" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-vcard"></i></span> &nbsp;<b>Panel</b> 
                 </a>
                 <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                     <span class="icon-bar"></span>
@@ -188,18 +188,40 @@ $sub_menu3 = strtolower($this->uri->segment(3));
             <!-- end sidebar user -->
             <!-- begin sidebar nav -->
             <ul class="nav">
-                <!-- MENU UMUM DARI SINI -->
-                <li class="nav-header">MENU NAVIGASI</li>
-                <li class="has-sub<?php if ($menu == 'users' AND $sub_menu == '' or $menu == 'dashboard') {
-                    echo " active";
-                } ?>">
-                    <a href="dashboard.html">
-                        <i class="ion-ios-pulse-strong"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <!-- MENU UMUM SAMPAI SINI -->
+<!-- MENU UMUM DARI SINI -->
+<?php
+// ===== Dashboard per-role dgn .html (tanpa /users) =====
+$role = strtolower(trim($level ?? 'guest'));
 
+switch ($role) {
+    case 'sekretariat_mkn':
+        $dashboardHref = 'sekretariat_mkn.html';
+        break;
+    case 'anggota_mkn':
+        $dashboardHref = 'anggota_mkn.html';
+        break;
+    case 'aph':
+        $dashboardHref = 'aph.html';
+        break;
+    default:
+        // role lain (superadmin, notaris, user, petugas, dll) tetap ke dashboard lama
+        $dashboardHref = 'dashboard.html';
+        break;
+}
+
+// Active state: cocokkan segmen URL dengan target tanpa .html
+$seg1       = strtolower($this->uri->segment(1) ?? '');
+$targetSlug = strtolower(str_replace('.html', '', $dashboardHref));
+$isActiveDashboard = ($menu === 'dashboard') || ($seg1 === $targetSlug);
+?>
+
+<li class="<?= $isActiveDashboard ? 'active' : '' ?>">
+  <a href="<?= htmlspecialchars($dashboardHref) ?>">
+    <i class="ion-ios-pulse-strong"></i>
+    <span>Dashboard</span>
+  </a>
+</li>
+<!-- MENU UMUM SAMPAI SINI -->
                 <!-- MENU SUPER ADMIN -->
                 <?php if ($level == 'superadmin'): ?>
                     <li <?php if ($menu == 'petugas') {
