@@ -90,6 +90,19 @@ $sub_menu3 = strtolower($this->uri->segment(3));
     <link rel="stylesheet" type="text/css" href="assets/mycss/custom-tabs.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/fancybox/jquery.fancybox.js"></script>
+    <script src="assets/panel/plugins/select2/dist/js/select2.min.js"></script>
+
+<style>
+  .select2-container--default .select2-selection--single {
+      height: 34px;
+      padding: 3px 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+      line-height: 26px;
+  }
+</style>
     <!-- header.php -->
 
 
@@ -384,6 +397,15 @@ $isActiveDashboard = ($menu === 'dashboard') || ($seg1 === $targetSlug);
                     </li>
                 <?php endif; ?>
                 <!-- akhir sesi PETUGAS -->
+                                 <!-- MENU SEKRETARIAT MKN -->
+                <?php if (in_array($level, ['sekretariat_mkn','sek_mkn'])): ?>
+                    <li <?php if ($menu == 'sekretariat_mkn' && $sub_menu == 'kelola_aph') { echo " class='active'"; } ?>>
+                        <a href="sekretariat_mkn/kelola_aph.html">
+                            <div class="icon-img"><i class="fa fa-id-card bg-blue"></i></div>
+                            <span>Kelola Akun APH</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <!-- MENU USER -->
                 <?php if ($level == 'user'): ?>
                     <li <?php if ($menu == 'pengaduan' AND $sub_menu == 'v') {
