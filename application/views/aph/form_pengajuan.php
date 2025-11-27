@@ -41,7 +41,7 @@ $val_kronologi      = $is_edit ? $d->kronologi      : '';
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nama Notaris <span class="text-danger">*</span></label>
-                            <select name="nama_notaris" id="nama_notaris" class="form-control select2-notaris" required>
+                            <select name="id_data_notaris" id="id_data_notaris" class="form-control select2-notaris" required>
                                 <option value="">-- Pilih Notaris --</option>
                                 <?php if (!empty($list_notaris)): ?>
                                     <?php foreach ($list_notaris as $n): ?>
@@ -49,7 +49,7 @@ $val_kronologi      = $is_edit ? $d->kronologi      : '';
                                             $selected = ($is_edit && $val_nama_notaris == $n->nama) ? 'selected' : '';
                                         ?>
                                         <option
-                                            value="<?= htmlspecialchars($n->nama, ENT_QUOTES, 'UTF-8'); ?>"
+                                            value="<?= htmlspecialchars($n->id_data_notaris, ENT_QUOTES, 'UTF-8'); ?>"
                                             data-alamat="<?= htmlspecialchars($n->alamat_notaris . ' - ' . $n->tempat_kedudukan, ENT_QUOTES, 'UTF-8'); ?>"
                                             <?= $selected; ?>>
                                             <?= htmlspecialchars($n->nama . ' - ' . $n->tempat_kedudukan, ENT_QUOTES, 'UTF-8'); ?>

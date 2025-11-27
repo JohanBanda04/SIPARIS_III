@@ -99,6 +99,13 @@
                         Naik ke Penyidikan
                     </a>
 
+                    <!-- TOMBOL DITOLAK (BARU) -->
+                    <a href="<?= site_url('sekretariat_mkn/tolak_penyelidikan/'.$d->id_perkara); ?>"
+                       class="btn btn-danger"
+                       onclick="return confirm('Tolak perkara ini? Status akan diubah menjadi DITOLAK.');">
+                        Ditolak
+                    </a>
+
                 <?php elseif ($d->tahapan == 'penyidikan' && $d->status == 'proses'): ?>
 
                     <a href="<?= site_url('sekretariat_mkn/penyidikan'); ?>" class="btn btn-default">
@@ -242,32 +249,33 @@
 
         </div>
     </div>
+
     <div class="panel panel-default">
-    <div class="panel-heading">
-        <strong>Catatan Pemeriksaan / Hasil Sidang</strong>
-    </div>
-    <div class="panel-body">
-        <form action="<?= site_url('sekretariat_mkn/simpan_catatan/'.$perkara->id_perkara); ?>" method="post">
-            <div class="form-group">
-                <label>Riwayat Catatan</label>
-                <div style="white-space:pre-wrap; border:1px solid #eee; padding:10px; border-radius:4px; background:#fafafa; max-height:250px; overflow-y:auto;">
-                    <?= !empty($perkara->catatan) ? nl2br(htmlspecialchars($perkara->catatan)) : '<span class="text-muted">Belum ada catatan.</span>'; ?>
+        <div class="panel-heading">
+            <strong>Catatan Pemeriksaan / Hasil Sidang</strong>
+        </div>
+        <div class="panel-body">
+            <form action="<?= site_url('sekretariat_mkn/simpan_catatan/'.$perkara->id_perkara); ?>" method="post">
+                <div class="form-group">
+                    <label>Riwayat Catatan</label>
+                    <div style="white-space:pre-wrap; border:1px solid #eee; padding:10px; border-radius:4px; background:#fafafa; max-height:250px; overflow-y:auto;">
+                        <?= !empty($perkara->catatan) ? nl2br(htmlspecialchars($perkara->catatan)) : '<span class="text-muted">Belum ada catatan.</span>'; ?>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label>Catatan Baru</label>
-                <textarea name="catatan" class="form-control" rows="3"
-                          placeholder="Tulis ringkasan hasil pemeriksaan anggota / kesimpulan sidang..."></textarea>
-            </div>
+                <div class="form-group">
+                    <label>Catatan Baru</label>
+                    <textarea name="catatan" class="form-control" rows="3"
+                              placeholder="Tulis ringkasan hasil pemeriksaan anggota / kesimpulan sidang..."></textarea>
+                </div>
 
-            <div class="text-right">
-                <button type="submit" class="btn btn-primary">
-                    Simpan Catatan
-                </button>
-            </div>
-        </form>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Catatan
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
 </div>

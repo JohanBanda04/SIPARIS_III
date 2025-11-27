@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Sekretariat_mkn extends CI_Controller
 {
@@ -9,7 +9,7 @@ class Sekretariat_mkn extends CI_Controller
 
         // Library & helper
         $this->load->library('session');
-        $this->load->helper(['url','form']);
+        $this->load->helper(['url', 'form']);
         $this->load->model('Mcrud');
 
         // Wajib login
@@ -32,7 +32,7 @@ class Sekretariat_mkn extends CI_Controller
     {
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Dashboard Sekretariat MKN - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Dashboard Sekretariat MKN - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         // Inisialisasi KPI dengan 0
@@ -92,7 +92,7 @@ class Sekretariat_mkn extends CI_Controller
     {
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Perkara Tahap Penyelidikan - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Perkara Tahap Penyelidikan - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -113,7 +113,7 @@ class Sekretariat_mkn extends CI_Controller
     {
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Perkara Tahap Penyidikan - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Perkara Tahap Penyidikan - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -134,7 +134,7 @@ class Sekretariat_mkn extends CI_Controller
     {
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Perkara Tahap Penuntutan - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Perkara Tahap Penuntutan - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -152,7 +152,7 @@ class Sekretariat_mkn extends CI_Controller
     {
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Perkara Tahap Sidang - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Perkara Tahap Sidang - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -177,7 +177,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Detail Perkara - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Detail Perkara - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         // Perkara
@@ -240,6 +240,50 @@ class Sekretariat_mkn extends CI_Controller
 
         redirect('sekretariat_mkn/penyelidikan');
     }
+
+    public function tolak_penyelidikan($id_perkara = null)
+    {
+        if ($id_perkara === null) {
+            redirect('sekretariat_mkn/penyelidikan');
+        }
+
+        // Pastikan perkara ada, status masih proses, dan masih di tahap penyelidikan
+        $this->db->from('tbl_mkn_perkara');
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->where('status', 'proses');
+        $this->db->where('tahapan', 'penyelidikan');
+        $row = $this->db->get()->row();
+
+        if (!$row) {
+            $this->session->set_flashdata(
+                'msg',
+                '<div class="alert alert-danger">
+                Perkara tidak ditemukan atau sudah tidak dalam tahap Penyelidikan / tidak berstatus proses.
+            </div>'
+            );
+            redirect('sekretariat_mkn/penyelidikan');
+            return;
+        }
+
+        // Ubah status jadi ditolak, tahapan tetap penyelidikan
+        $data_update = [
+            'status'     => 'ditolak',
+            'tgl_update' => date('Y-m-d H:i:s'),
+        ];
+
+        $this->db->where('id_perkara', $id_perkara);
+        $this->db->update('tbl_mkn_perkara', $data_update);
+
+        $this->session->set_flashdata(
+            'msg',
+            '<div class="alert alert-warning">
+            Perkara telah ditandai sebagai <b>DITOLAK</b> pada tahap Penyelidikan.
+        </div>'
+        );
+
+        redirect('sekretariat_mkn/penyelidikan');
+    }
+
 
     public function naik_penuntutan($id_perkara = null)
     {
@@ -328,7 +372,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Buat Surat Pemanggilan - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Buat Surat Pemanggilan - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -411,14 +455,14 @@ class Sekretariat_mkn extends CI_Controller
             if (!$this->upload->do_upload('lampiran')) {
                 $this->session->set_flashdata(
                     'msg',
-                    '<div class="alert alert-danger"><b>Upload gagal:</b> '.$this->upload->display_errors('', '').'</div>'
+                    '<div class="alert alert-danger"><b>Upload gagal:</b> ' . $this->upload->display_errors('', '') . '</div>'
                 );
-                redirect('sekretariat_mkn/buat_surat/'.$id_perkara);
+                redirect('sekretariat_mkn/buat_surat/' . $id_perkara);
                 return;
             }
 
             $upData        = $this->upload->data();
-            $lampiran_path = 'uploads/mkn_surat/'.$upData['file_name'];
+            $lampiran_path = 'uploads/mkn_surat/' . $upData['file_name'];
         }
 
         $insert = [
@@ -452,7 +496,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Surat Jawaban Ketua ke APH - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Surat Jawaban Ketua ke APH - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -534,14 +578,14 @@ class Sekretariat_mkn extends CI_Controller
             if (!$this->upload->do_upload('lampiran')) {
                 $this->session->set_flashdata(
                     'msg',
-                    '<div class="alert alert-danger"><b>Upload gagal:</b> '.$this->upload->display_errors('', '').'</div>'
+                    '<div class="alert alert-danger"><b>Upload gagal:</b> ' . $this->upload->display_errors('', '') . '</div>'
                 );
-                redirect('sekretariat_mkn/buat_surat_jawaban/'.$id_perkara);
+                redirect('sekretariat_mkn/buat_surat_jawaban/' . $id_perkara);
                 return;
             }
 
             $upData        = $this->upload->data();
-            $lampiran_path = 'uploads/mkn_surat/'.$upData['file_name'];
+            $lampiran_path = 'uploads/mkn_surat/' . $upData['file_name'];
         }
 
         $insert = [
@@ -575,7 +619,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Putusan Hasil Pemeriksaan - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Putusan Hasil Pemeriksaan - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         $this->db->from('tbl_mkn_perkara');
@@ -657,14 +701,14 @@ class Sekretariat_mkn extends CI_Controller
             if (!$this->upload->do_upload('lampiran')) {
                 $this->session->set_flashdata(
                     'msg',
-                    '<div class="alert alert-danger"><b>Upload gagal:</b> '.$this->upload->display_errors('', '').'</div>'
+                    '<div class="alert alert-danger"><b>Upload gagal:</b> ' . $this->upload->display_errors('', '') . '</div>'
                 );
-                redirect('sekretariat_mkn/buat_putusan/'.$id_perkara);
+                redirect('sekretariat_mkn/buat_putusan/' . $id_perkara);
                 return;
             }
 
             $upData        = $this->upload->data();
-            $lampiran_path = 'uploads/mkn_surat/'.$upData['file_name'];
+            $lampiran_path = 'uploads/mkn_surat/' . $upData['file_name'];
         }
 
         $insert = [
@@ -711,15 +755,15 @@ class Sekretariat_mkn extends CI_Controller
         }
 
         if ($this->input->method() !== 'post') {
-            redirect('sekretariat_mkn/detail/'.$id_perkara);
+            redirect('sekretariat_mkn/detail/' . $id_perkara);
         }
 
         $id_user       = $this->session->userdata('id_user');
         $catatan_baru  = trim($this->input->post('catatan', TRUE));
 
         if ($catatan_baru === '') {
-            $this->session->set_flashdata('msg','<div class="alert alert-warning">Catatan masih kosong.</div>');
-            redirect('sekretariat_mkn/detail/'.$id_perkara);
+            $this->session->set_flashdata('msg', '<div class="alert alert-warning">Catatan masih kosong.</div>');
+            redirect('sekretariat_mkn/detail/' . $id_perkara);
         }
 
         // Ambil data perkara
@@ -728,13 +772,13 @@ class Sekretariat_mkn extends CI_Controller
         $row = $this->db->get()->row();
 
         if (!$row) {
-            $this->session->set_flashdata('msg','<div class="alert alert-warning">Perkara tidak ditemukan.</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-warning">Perkara tidak ditemukan.</div>');
             redirect('sekretariat_mkn');
         }
 
         // Susun catatan dengan timestamp & user
-        $prefix = '['.date('d/m/Y H:i').' oleh Sekretariat#'.$id_user.'] ';
-        $gabung = $prefix.$catatan_baru;
+        $prefix = '[' . date('d/m/Y H:i') . ' oleh Sekretariat#' . $id_user . '] ';
+        $gabung = $prefix . $catatan_baru;
 
         if (!empty($row->catatan)) {
             $gabung = $row->catatan . "\n\n" . $gabung;
@@ -753,7 +797,7 @@ class Sekretariat_mkn extends CI_Controller
                 : '<div class="alert alert-danger">Gagal menyimpan catatan pemeriksaan.</div>'
         );
 
-        redirect('sekretariat_mkn/detail/'.$id_perkara);
+        redirect('sekretariat_mkn/detail/' . $id_perkara);
     }
 
     public function catatan_hari_ini()
@@ -764,7 +808,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Perkara dengan Catatan Baru Hari Ini - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Perkara dengan Catatan Baru Hari Ini - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         // Ambil perkara yang catatannya diupdate hari ini
@@ -797,7 +841,7 @@ class Sekretariat_mkn extends CI_Controller
 
         $ceks = $this->session->userdata('username');
 
-        $data['judul_web'] = 'Kelola Akun APH - '.$this->Mcrud->judul_web();
+        $data['judul_web'] = 'Kelola Akun APH - ' . $this->Mcrud->judul_web();
         $data['user']      = $this->Mcrud->get_users_by_un($ceks);
 
         // ========= HANDLE FORM SIMPAN AKUN BARU =========
@@ -814,7 +858,7 @@ class Sekretariat_mkn extends CI_Controller
                 $err = 'Semua field bertanda * wajib diisi.';
             } elseif ($pass !== $pass2) {
                 $err = 'Konfirmasi password tidak sama.';
-            } elseif (!in_array($level_aph, ['aph','aph_polri'])) {
+            } elseif (!in_array($level_aph, ['aph', 'aph_polri'])) {
                 $err = 'Level APH tidak valid.';
             } else {
                 // Cek username sudah dipakai atau belum
@@ -825,13 +869,14 @@ class Sekretariat_mkn extends CI_Controller
             }
 
             if ($err !== '') {
-                $this->session->set_flashdata('msg',
+                $this->session->set_flashdata(
+                    'msg',
                     '<div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>'
-                        .$err.
-                    '</div>'
+                        . $err .
+                        '</div>'
                 );
                 redirect('sekretariat_mkn/kelola_aph');
             }
@@ -853,7 +898,8 @@ class Sekretariat_mkn extends CI_Controller
 
             $this->db->insert('tbl_user', $data_insert);
 
-            $this->session->set_flashdata('msg',
+            $this->session->set_flashdata(
+                'msg',
                 '<div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -891,8 +937,9 @@ class Sekretariat_mkn extends CI_Controller
             'id_user' => $id_user
         ])->row();
 
-        if (!$user || !in_array($user->level, ['aph','aph_polri'])) {
-            $this->session->set_flashdata('msg',
+        if (!$user || !in_array($user->level, ['aph', 'aph_polri'])) {
+            $this->session->set_flashdata(
+                'msg',
                 '<div class="alert alert-danger">User APH tidak ditemukan.</div>'
             );
             redirect('sekretariat_mkn/kelola_aph');
@@ -902,12 +949,13 @@ class Sekretariat_mkn extends CI_Controller
         $newStatus = ($user->aktif == 1) ? 0 : 1;
 
         $this->db->where('id_user', $id_user)
-                 ->update('tbl_user', ['aktif' => $newStatus]);
+            ->update('tbl_user', ['aktif' => $newStatus]);
 
         $text = ($newStatus == 1) ? 'diaktifkan' : 'dinonaktifkan';
 
-        $this->session->set_flashdata('msg',
-            '<div class="alert alert-success">Akun APH berhasil '.$text.'.</div>'
+        $this->session->set_flashdata(
+            'msg',
+            '<div class="alert alert-success">Akun APH berhasil ' . $text . '.</div>'
         );
 
         redirect('sekretariat_mkn/kelola_aph');
@@ -927,8 +975,9 @@ class Sekretariat_mkn extends CI_Controller
             'id_user' => $id_user
         ])->row();
 
-        if (!$user || !in_array($user->level, ['aph','aph_polri'])) {
-            $this->session->set_flashdata('msg',
+        if (!$user || !in_array($user->level, ['aph', 'aph_polri'])) {
+            $this->session->set_flashdata(
+                'msg',
                 '<div class="alert alert-danger">User APH tidak ditemukan.</div>'
             );
             redirect('sekretariat_mkn/kelola_aph');
@@ -939,12 +988,13 @@ class Sekretariat_mkn extends CI_Controller
 
         // Ikuti pola lama: simpan apa adanya
         $this->db->where('id_user', $id_user)
-                 ->update('tbl_user', ['password' => $newPass]);
+            ->update('tbl_user', ['password' => $newPass]);
 
-        $this->session->set_flashdata('msg',
+        $this->session->set_flashdata(
+            'msg',
             '<div class="alert alert-success">
-                Password akun <b>'.htmlspecialchars($user->username).'</b> berhasil direset.<br>
-                Password baru: <b>'.$newPass.'</b>
+                Password akun <b>' . htmlspecialchars($user->username) . '</b> berhasil direset.<br>
+                Password baru: <b>' . $newPass . '</b>
             </div>'
         );
 

@@ -24,6 +24,7 @@ $cards = [
   ['key'=>'dikirim',        'title'=>'Dikirim / Belum Ditanggapi', 'href'=>'aph/permohonan?status=dikirim',   'cta'=>'Buka',   'icon'=>'fa-clock-o',          'bg'=>'bg-orange'],
   ['key'=>'diproses',       'title'=>'Diproses',                   'href'=>'aph/permohonan?status=diproses',  'cta'=>'Lihat',  'icon'=>'fa-cogs',             'bg'=>'bg-primary'],
   ['key'=>'selesai',        'title'=>'Selesai',                    'href'=>'aph/permohonan?status=selesai',   'cta'=>'Lihat',  'icon'=>'fa-check',            'bg'=>'bg-green'],
+  ['key'=>'ditolak',  'title'=>'Ditolak',                     'href'=>'aph/permohonan?status=ditolak',  'cta'=>'Lihat', 'icon'=>'fa-times-circle',     'bg'=>'bg-red'],
   // aktifkan kalau klien ingin ditampilkan juga:
   // ['key'=>'ditolak',     'title'=>'Ditolak',                    'href'=>'aph/permohonan?status=ditolak',   'cta'=>'Detail', 'icon'=>'fa-times-circle',     'bg'=>'bg-red'],
 ];
