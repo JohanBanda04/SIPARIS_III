@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Aph extends CI_Controller {
     public function index()
 {
+    //echo "test";die;
     if (!$this->session->userdata('username')) {
         redirect('web/login');
     }
@@ -43,6 +44,13 @@ class Aph extends CI_Controller {
     $this->db->where('status', 'selesai');
     $kpi['selesai'] = $this->db->count_all_results();
 
+        // Ditolak
+        $this->db->from('tbl_mkn_perkara');
+        $this->db->where('id_user_pengaju', $id_user);
+        $this->db->where('status', 'ditolak');
+        $kpi['ditolak'] = $this->db->count_all_results();
+    
+
     $data['kpi'] = $kpi;
 
     $this->load->view('users/header', $data);
@@ -51,6 +59,7 @@ class Aph extends CI_Controller {
 }
     public function create()
 {
+    //echo "tes";die;
     // biar URL aph/create sama saja dengan aph/form_pengajuan
     $this->form_pengajuan();
 }
@@ -194,7 +203,13 @@ public function __construct()
         }
 
         // Validasi minimal
-        $nama_notaris   = $this->input->post('nama_notaris', true);
+        $id_data_notaris   = $this->input->post('id_data_notaris', true);
+        $this->db->where('id_data_notaris', $id_data_notaris);
+        $queryNotarisName = $this->db->get('tbl_data_notaris')->row();
+        $namaNotaris = $queryNotarisName->nama;
+        //echo $namaNotaris ; die;
+        //print_r($queryNotarisName->result()); die;
+        $nama_notaris = $namaNotaris;
         $alamat_notaris = $this->input->post('alamat_notaris', true);
         $kronologi      = $this->input->post('kronologi', true);
         $nomor_akta     = $this->input->post('nomor_akta', true);
@@ -212,6 +227,7 @@ public function __construct()
         $data_insert = [
             'id_user_pengaju' => $this->session->userdata('id_user'),
             'nama_notaris'    => $nama_notaris,
+            'id_data_notaris' => $id_data_notaris,
             'alamat_notaris'  => $alamat_notaris,
             'kronologi'       => $kronologi,
             'nomor_akta'      => $nomor_akta,
@@ -262,6 +278,9 @@ public function __construct()
         ],
         'selesai' => [
             'status' => 'selesai',
+        ],
+        'ditolak' => [
+            'status' => 'ditolak',
         ],
     ];
 
